@@ -1,4 +1,4 @@
-//version 1
+//version 1.1
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -49,11 +49,14 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    const unsigned int fsize1 = fsize(f1);
-    const unsigned int fsize2 = fsize(f2);
+    const unsigned long fsize1 = fsize(f1);
+    const unsigned long fsize2 = fsize(f2);
 
-    unsigned char data1[fsize1];
-    unsigned char data2[fsize2];
+    unsigned char *data1;
+    unsigned char *data2;
+
+    data1 = (char*) malloc(fsize1 * sizeof(char));
+    data2 = (char*) malloc(fsize2 * sizeof(char));
 
 
     if(fsize1 == fsize2)
@@ -68,7 +71,7 @@ int main(int argc, char *argv[])
         {
             if (data1[i] != data2[i])
             {
-                printf("%08X: %X %X\n", i, data1[i], data2[i]);
+                printf("%08X: %02X %02X\n", i, data1[i], data2[i]);
             }
         }
         fclose(f1);
