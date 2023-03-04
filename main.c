@@ -5,6 +5,7 @@
 #include <stdbool.h>
 
 #define HELP_TXT "hexdiff v1.0\nUsage: hexdiff <file1> <file2>\n"
+#define FILE_OPEN_ERROR "Error while opening the file.\n"
 
 bool check(int argc, char *argv[])
 {
@@ -25,10 +26,6 @@ int fsize(FILE *fp)
     return sz;
 }
 
-struct fl {
-    int a;
-};
-
 int main(int argc, char *argv[])
 {
     if (!check(argc, argv))
@@ -45,7 +42,7 @@ int main(int argc, char *argv[])
 
     if (f1 == NULL || f2 == NULL)
     {
-        perror("Error while opening the file.\n");
+        perror(FILE_OPEN_ERROR);
         exit(EXIT_FAILURE);
     }
 
