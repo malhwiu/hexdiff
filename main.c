@@ -1,13 +1,13 @@
-//version 1.1
+//version 1.2
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 
-#define HELP_TXT "hexdiff v1.0\nUsage: hexdiff <file1> <file2>\n"
+#define HELP_TXT "hexdiff v1.2\nUsage: hexdiff <file1> <file2>\n"
 #define FILE_OPEN_ERROR "Error while opening the file.\n"
 
-bool check(int argc, char *argv[])
+bool check_arg(int argc, char *argv[])
 {
     if(argc != 3)
     {
@@ -28,7 +28,7 @@ int fsize(FILE *fp)
 
 int main(int argc, char *argv[])
 {
-    if (!check(argc, argv))
+    if (!check_arg(argc, argv))
     {
         printf(HELP_TXT);
         return 0;
@@ -90,16 +90,43 @@ int main(int argc, char *argv[])
         {
             if (data1[i] != data2[i])
             {
-                printf("%08X: %X %X\n", i, data1[i], data2[i]);
+                printf("%08X: %02X %02X\n", i, data1[i], data2[i]);
             }
         }
 
-        printf("add %d bytes in %s:\n", fsize2 - fsize1, fname2);
+        printf("more %d bytes in %s:\n", fsize2 - fsize1, fname2);
         for (int i = fsize1; i < fsize2; i++)
         {
-            printf("%08X: %X\n", i, data2[i]);
+            printf("%08X: %02X\n", i, data2[i]);
         }
 
+    }
+
+    if(fsize1 > fsize2)
+    {
+        for ( int i = 0 ; i < fsize1 ; i++ ) 
+        {
+            fread(&data1[i], sizeof(data1[i]), 1, f1);
+        }
+
+        for ( int i = 0 ; i < fsize2 ; i++ )
+        {
+            fread(&data2[i], sizeof(data2[i]), 1, f2);
+        }
+
+        for (int i = 0; i < fsize2; i++)
+        {
+            if (data1[i] != data2[i])
+            {
+                printf("%08X: %02X %02X\n", i, data1[i], data2[i]);
+            }
+        }
+
+        printf("more %d bytes in %s:\n", fsize1 - fsize2, fname1);
+        for (int i = fsize2; i < fsize1; i++)
+        {
+            printf("%08X: %02X\n", i, data1[i]);
+        }
     }
 
     return 0;
