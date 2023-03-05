@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
             }
         }
 
-        printf("more %d bytes in %s:\n", fsize2 - fsize1, fname2);
+        printf("%d more bytes in %s:\n", fsize2 - fsize1, fname2);
         for (int i = fsize1; i < fsize2; i++)
         {
             printf("%08X: %02X\n", i, data2[i]);
@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
             }
         }
 
-        printf("more %d bytes in %s:\n", fsize1 - fsize2, fname1);
+        printf("%d more bytes in %s:\n", fsize1 - fsize2, fname1);
         for (int i = fsize2; i < fsize1; i++)
         {
             printf("%08X: %02X\n", i, data1[i]);
