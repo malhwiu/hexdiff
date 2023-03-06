@@ -37,4 +37,4 @@ If build succeded, than I'm really glad for you. Now you can put the binary into
 
 - Make it more memory efficient
 - Make it faster
-- Make it to accept more arguments then just <file1> and <file2>
+- Make it to accept more arguments then just `file1` and `file2`
