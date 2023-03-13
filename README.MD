@@ -31,7 +31,7 @@ Install `gcc`
 
 run `build.sh` or `gcc main.c -o build/hexdiff`
 
-If build succeded, than I'm really glad for you. Now you can put the binary into `/bin` folder if you want.
+If build succeded, then I'm really glad for you. Now you can put the binary into `/bin` folder if you want.
 
 ## Plans
 
