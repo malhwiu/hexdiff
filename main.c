@@ -92,14 +92,14 @@ int main(int argc, char *argv[])
                 printf(PRINT_DOUBLE_HEX, i, data[0], data[1]);
             }
         }
-
+        /*
         for (int i = 0; i < f_a.size; i++)
         {
             if (data1[i] != data2[i])
             {
                 printf(PRINT_DOUBLE_HEX, i, data1[i], data2[i]);
             }
-        }
+        } */
         fclose(f_a.file);
         fclose(f_b.file);
     }
