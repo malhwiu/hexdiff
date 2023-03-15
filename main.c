@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
                 printf(PRINT_DOUBLE_HEX, i, data[0], data[1]);
             }
         }
-        printf("%d more bytes in %s:\n", f_a.size - f_b.size, f_a.name);
+        printf("%lu more bytes in %s:\n", f_a.size - f_b.size, f_a.name);
         for (int i = f_b.size; i < f_a.size; i++)
         {
             unsigned char data;
@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
                 printf(PRINT_DOUBLE_HEX, i, data[0], data[1]);
             }
         }
-        printf("%d more bytes in %s:\n", f_b.size - f_a.size, f_b.name);
+        printf("%lu more bytes in %s:\n", f_b.size - f_a.size, f_b.name);
         for (int i = f_a.size; i < f_b.size; i++)
         {
             unsigned char data;
