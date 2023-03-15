@@ -9,7 +9,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <stdlib.h>
@@ -72,15 +72,9 @@ int main(int argc, char *argv[])
     f_a.size = fsize(f_a.file);
     f_b.size = fsize(f_b.file);
 
-    unsigned char *data1;
-    unsigned char *data2;
-
-    data1 = (char*) malloc(f_a.size * sizeof(char));
-    data2 = (char*) malloc(f_b.size * sizeof(char));
-
     if(f_a.size == f_b.size)
     {
-        for ( int i = 0 ; i < f_a.size; i++ ) 
+        for ( int i = 0 ; i < f_a.size; i++ )
         {
             unsigned char data[2];
 
@@ -92,7 +86,7 @@ int main(int argc, char *argv[])
                 printf(PRINT_DOUBLE_HEX, i, data[0], data[1]);
             }
         }
-        
+
         fclose(f_a.file);
         fclose(f_b.file);
     }
