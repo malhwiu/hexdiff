@@ -35,6 +35,4 @@ If build succeded, then I'm really glad for you. Now you can put the binary into
 
 ## Plans
 
-- Make it more memory efficient
-- Make it faster
 - Make it to accept more arguments then just `file1` and `file2`
