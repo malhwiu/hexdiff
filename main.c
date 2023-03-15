@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FILE_OPEN_ERROR "Error while opening the file.\n"
 
 #define PRINT_DOUBLE_HEX "%08X: %02X %02X\n"
+#define PRINT_SINGLE_HEX "%08X: %02X\n"
 
 bool check_arg(int argc, char *argv[])
 {
@@ -85,6 +86,60 @@ int main(int argc, char *argv[])
             {
                 printf(PRINT_DOUBLE_HEX, i, data[0], data[1]);
             }
+        }
+
+        fclose(f_a.file);
+        fclose(f_b.file);
+    }
+
+    if(f_a.size > f_b.size)
+    {
+        for ( int i = 0 ; i < f_b.size; i++ )
+        {
+            unsigned char data[2];
+
+            fread(&data[0], 1, 1, f_a.file);
+            fread(&data[1], 1, 1, f_b.file);
+
+            if (data[0] != data[1])
+            {
+                printf(PRINT_DOUBLE_HEX, i, data[0], data[1]);
+            }
+        }
+        printf("%d more bytes in %s:\n", f_a.size - f_b.size, f_a.name);
+        for (int i = f_b.size; i < f_a.size; i++)
+        {
+            unsigned char data;
+
+            fread(&data, 1, 1, f_a.file);
+            printf(PRINT_SINGLE_HEX, i, data);
+        }
+
+        fclose(f_a.file);
+        fclose(f_b.file);
+    }
+
+    if(f_a.size < f_b.size)
+    {
+        for ( int i = 0 ; i < f_a.size; i++ )
+        {
+            unsigned char data[2];
+
+            fread(&data[0], 1, 1, f_a.file);
+            fread(&data[1], 1, 1, f_b.file);
+
+            if (data[0] != data[1])
+            {
+                printf(PRINT_DOUBLE_HEX, i, data[0], data[1]);
+            }
+        }
+        printf("%d more bytes in %s:\n", f_b.size - f_a.size, f_b.name);
+        for (int i = f_a.size; i < f_b.size; i++)
+        {
+            unsigned char data;
+
+            fread(&data, 1, 1, f_b.file);
+            printf(PRINT_SINGLE_HEX, i, data);
         }
 
         fclose(f_a.file);
