@@ -1,4 +1,8 @@
 .vscode
 build/
+obj/
+bin/
 *.s
 *.exe
+*.cbp
+*.layout
